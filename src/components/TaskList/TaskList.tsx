@@ -8,10 +8,12 @@ export const TaskList: React.FC = () => {
 
   if (tasks.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-md p-8 text-center">
-        <FaInbox className="text-6xl text-gray-300 mx-auto mb-4" />
-        <p className="text-gray-500 text-lg">タスクがありません</p>
-        <p className="text-gray-400 mt-2">新しいタスクを追加してください</p>
+      <div className="glass-card rounded-xl p-12 text-center animate-fade-in">
+        <div className="bg-gradient-to-br from-primary-50 to-primary-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
+          <FaInbox className="text-5xl text-primary-400" />
+        </div>
+        <p className="text-slate-700 text-xl font-medium mb-2">タスクがありません</p>
+        <p className="text-slate-500">新しいタスクを追加して始めましょう</p>
       </div>
     );
   }

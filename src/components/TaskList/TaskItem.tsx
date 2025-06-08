@@ -19,10 +19,25 @@ interface TaskItemProps {
   task: Task;
 }
 
-const priorityColors = {
-  high: 'text-red-500',
-  medium: 'text-yellow-500',
-  low: 'text-green-500',
+const priorityStyles = {
+  high: {
+    color: 'text-red-600',
+    bg: 'bg-red-50',
+    border: 'border-red-200',
+    icon: 'text-red-500',
+  },
+  medium: {
+    color: 'text-amber-600',
+    bg: 'bg-amber-50',
+    border: 'border-amber-200',
+    icon: 'text-amber-500',
+  },
+  low: {
+    color: 'text-emerald-600',
+    bg: 'bg-emerald-50',
+    border: 'border-emerald-200',
+    icon: 'text-emerald-500',
+  },
 };
 
 const categoryIcons = {
@@ -58,13 +73,17 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
   }
 
   return (
-    <div className={`bg-white rounded-lg shadow-md p-4 mb-3 transition-all ${task.completed ? 'opacity-75' : ''}`}>
-      <div className="flex items-start gap-3">
+    <div className={`glass-card rounded-xl p-5 mb-4 transition-all duration-300 hover:scale-[1.02] ${
+      task.completed ? 'opacity-70 hover:opacity-90' : ''
+    } animate-slide-up`}>
+      <div className="flex items-start gap-4">
         {/* チェックボックス */}
         <button
           onClick={handleToggle}
-          className={`text-2xl transition-colors ${
-            task.completed ? 'text-green-500' : 'text-gray-400 hover:text-green-500'
+          className={`text-2xl transition-all duration-200 ${
+            task.completed 
+              ? 'text-emerald-500 hover:text-emerald-600' 
+              : 'text-slate-300 hover:text-emerald-400 hover:scale-110'
           }`}
         >
           {task.completed ? <FaCheckCircle /> : <FaCircle />}
@@ -93,9 +112,11 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
                 </div>
 
                 {/* 優先度 */}
-                <div className={`flex items-center gap-1 ${priorityColors[task.priority]}`}>
-                  <FaFlag />
-                  <span className="capitalize">{task.priority}</span>
+                <div className={`badge ${priorityStyles[task.priority].bg} ${priorityStyles[task.priority].border} border ${priorityStyles[task.priority].color}`}>
+                  <FaFlag className={`${priorityStyles[task.priority].icon} text-xs`} />
+                  <span className="font-medium">
+                    {task.priority === 'high' ? '高' : task.priority === 'medium' ? '中' : '低'}
+                  </span>
                 </div>
 
                 {/* 期限 */}
@@ -112,26 +133,26 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
             </div>
 
             {/* アクションボタン */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <button
                 onClick={() => setIsEditing(true)}
-                className="text-blue-500 hover:text-blue-700 transition-colors"
+                className="p-2 text-primary-600 hover:text-primary-700 hover:bg-primary-50 rounded-lg transition-all duration-200"
                 title="編集"
               >
-                <FaEdit />
+                <FaEdit className="text-lg" />
               </button>
               
               {showDeleteConfirm ? (
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2 ml-2 animate-slide-up">
                   <button
                     onClick={handleDelete}
-                    className="text-xs bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition-colors"
+                    className="text-xs bg-red-500 text-white px-3 py-1.5 rounded-lg hover:bg-red-600 transition-colors shadow-sm"
                   >
-                    削除
+                    削除する
                   </button>
                   <button
                     onClick={() => setShowDeleteConfirm(false)}
-                    className="text-xs bg-gray-300 text-gray-700 px-2 py-1 rounded hover:bg-gray-400 transition-colors"
+                    className="text-xs bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg hover:bg-slate-300 transition-colors"
                   >
                     キャンセル
                   </button>
@@ -139,10 +160,10 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
               ) : (
                 <button
                   onClick={() => setShowDeleteConfirm(true)}
-                  className="text-red-500 hover:text-red-700 transition-colors"
+                  className="p-2 text-red-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200"
                   title="削除"
                 >
-                  <FaTrash />
+                  <FaTrash className="text-lg" />
                 </button>
               )}
             </div>

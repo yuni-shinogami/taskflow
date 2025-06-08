@@ -73,22 +73,23 @@ export const TaskForm: React.FC<TaskFormProps> = ({ taskToEdit, onClose }) => {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+        className="btn-primary flex items-center gap-2 w-full md:w-auto justify-center animate-fade-in"
       >
-        <FaPlus /> 新しいタスクを追加
+        <FaPlus className="text-lg" /> 
+        <span className="font-semibold">新しいタスクを追加</span>
       </button>
     );
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+    <div className="glass-card rounded-xl p-6 mb-6 animate-slide-up">
       <h2 className="text-xl font-semibold mb-4">
         {taskToEdit ? 'タスクを編集' : '新しいタスクを作成'}
       </h2>
       
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="title" className="block text-sm font-medium text-slate-700 mb-2">
             タイトル <span className="text-red-500">*</span>
           </label>
           <input
@@ -96,21 +97,21 @@ export const TaskForm: React.FC<TaskFormProps> = ({ taskToEdit, onClose }) => {
             id="title"
             value={formData.title}
             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="input-field"
             placeholder="タスクのタイトルを入力"
             required
           />
         </div>
 
         <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="description" className="block text-sm font-medium text-slate-700 mb-2">
             説明
           </label>
           <textarea
             id="description"
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="input-field"
             placeholder="タスクの詳細を入力（任意）"
             rows={3}
           />
@@ -118,14 +119,14 @@ export const TaskForm: React.FC<TaskFormProps> = ({ taskToEdit, onClose }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label htmlFor="priority" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="priority" className="block text-sm font-medium text-slate-700 mb-2">
               優先度
             </label>
             <select
               id="priority"
               value={formData.priority}
               onChange={(e) => setFormData({ ...formData, priority: e.target.value as Priority })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="input-field"
             >
               <option value="high">高</option>
               <option value="medium">中</option>
@@ -134,14 +135,14 @@ export const TaskForm: React.FC<TaskFormProps> = ({ taskToEdit, onClose }) => {
           </div>
 
           <div>
-            <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="category" className="block text-sm font-medium text-slate-700 mb-2">
               カテゴリー
             </label>
             <select
               id="category"
               value={formData.category}
               onChange={(e) => setFormData({ ...formData, category: e.target.value as Category })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="input-field"
             >
               <option value="work">仕事</option>
               <option value="personal">個人</option>
@@ -152,7 +153,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ taskToEdit, onClose }) => {
         </div>
 
         <div>
-          <label htmlFor="dueDate" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="dueDate" className="block text-sm font-medium text-slate-700 mb-2">
             期限
           </label>
           <input
@@ -160,23 +161,23 @@ export const TaskForm: React.FC<TaskFormProps> = ({ taskToEdit, onClose }) => {
             id="dueDate"
             value={formData.dueDate}
             onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="input-field"
           />
         </div>
 
-        <div className="flex gap-2 justify-end">
+        <div className="flex gap-3 justify-end pt-4">
           <button
             type="button"
             onClick={handleCancel}
-            className="px-4 py-2 text-gray-600 bg-gray-200 rounded-md hover:bg-gray-300 transition-colors"
+            className="btn-secondary flex items-center gap-2"
           >
-            <FaTimes className="inline mr-1" /> キャンセル
+            <FaTimes /> キャンセル
           </button>
           <button
             type="submit"
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+            className="btn-primary flex items-center gap-2"
           >
-            {taskToEdit ? '更新' : '作成'}
+            {taskToEdit ? '更新する' : '作成する'}
           </button>
         </div>
       </form>

@@ -19,10 +19,12 @@ export const TaskFilter: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 mb-6">
-      <div className="flex items-center gap-2 mb-4">
-        <FaFilter className="text-gray-600" />
-        <h2 className="text-lg font-semibold">フィルター・並び替え</h2>
+    <div className="glass-card rounded-xl p-5 mb-6 animate-fade-in">
+      <div className="flex items-center gap-3 mb-5">
+        <div className="bg-primary-100 p-2 rounded-lg">
+          <FaFilter className="text-primary-600 text-lg" />
+        </div>
+        <h2 className="text-lg font-semibold text-slate-800">フィルター・並び替え</h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -34,7 +36,7 @@ export const TaskFilter: React.FC = () => {
             placeholder="検索..."
             value={filter.searchQuery || ''}
             onChange={(e) => handleFilterChange('searchQuery', e.target.value)}
-            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-10 pr-3 py-2.5 bg-white/50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
           />
         </div>
 
@@ -42,7 +44,7 @@ export const TaskFilter: React.FC = () => {
         <select
           value={filter.category || ''}
           onChange={(e) => handleFilterChange('category', e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="input-field"
         >
           <option value="">すべてのカテゴリー</option>
           <option value="work">仕事</option>
@@ -55,7 +57,7 @@ export const TaskFilter: React.FC = () => {
         <select
           value={filter.priority || ''}
           onChange={(e) => handleFilterChange('priority', e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="input-field"
         >
           <option value="">すべての優先度</option>
           <option value="high">高</option>
@@ -67,7 +69,7 @@ export const TaskFilter: React.FC = () => {
         <select
           value={filter.completed === undefined ? '' : filter.completed.toString()}
           onChange={(e) => handleFilterChange('completed', e.target.value === '' ? undefined : e.target.value === 'true')}
-          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="input-field"
         >
           <option value="">すべてのタスク</option>
           <option value="false">未完了</option>
@@ -78,7 +80,7 @@ export const TaskFilter: React.FC = () => {
         <select
           value={`${sort.by}-${sort.order}`}
           onChange={handleSortChange}
-          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="input-field"
         >
           <option value="createdAt-desc">作成日（新しい順）</option>
           <option value="createdAt-asc">作成日（古い順）</option>

@@ -8,13 +8,17 @@ import { TaskList } from './components/TaskList/TaskList';
 function App() {
   return (
     <TaskProvider>
-      <div className="min-h-screen bg-gray-100">
+      <div className="min-h-screen">
         <Header />
         
-        <main className="container mx-auto px-4 py-8">
-          <div className="max-w-6xl mx-auto">
+        <main className="container mx-auto px-4 py-8 md:py-12">
+          <div className="max-w-7xl mx-auto">
             <TaskStats />
-            <TaskForm />
+            
+            <div className="mb-6">
+              <TaskForm />
+            </div>
+            
             <TaskFilter />
             <TaskList />
           </div>
