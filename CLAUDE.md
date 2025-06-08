@@ -22,6 +22,13 @@ npm run dev       # Start development server
 npm run build     # Build for production
 npm run preview   # Preview production build
 npm run lint      # Run ESLint
+
+# E2E Testing Commands
+npm run test:e2e         # Run all e2e tests headlessly
+npm run test:e2e:ui      # Open Playwright UI mode
+npm run test:e2e:debug   # Run tests in debug mode
+npm run test:e2e:headed  # Run tests with browser visible
+npm run test:e2e:report  # Show HTML test report
 ```
 
 ## Project Structure
@@ -92,3 +99,27 @@ taskflow/
 - Use conventional commits (feat:, fix:, docs:, etc.)
 - Create feature branches for new functionality
 - Keep commits atomic and well-described
+
+## E2E Testing
+
+The project includes comprehensive end-to-end tests using Playwright:
+
+1. **Test Structure**:
+   - `e2e/taskflow.spec.ts` - Core functionality tests
+   - `e2e/performance.spec.ts` - Performance and efficiency tests
+   - `e2e/accessibility.spec.ts` - Accessibility compliance tests
+   - `e2e/advanced-scenarios.spec.ts` - Complex workflow tests
+
+2. **Test Helpers**:
+   - `e2e/helpers/task-helpers.ts` - Reusable functions for common operations
+
+3. **CI Integration**:
+   - Tests run automatically on push to main/develop branches
+   - Test reports and screenshots are uploaded as artifacts
+
+4. **Running Tests Locally**:
+   ```bash
+   npx playwright install  # First time setup
+   npm run test:e2e       # Run all tests
+   npm run test:e2e:ui    # Interactive UI mode
+   ```

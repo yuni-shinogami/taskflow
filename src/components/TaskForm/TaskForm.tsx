@@ -100,6 +100,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ taskToEdit, onClose }) => {
             className="input-field"
             placeholder="タスクのタイトルを入力"
             required
+            aria-label="タイトル"
           />
         </div>
 
@@ -112,8 +113,9 @@ export const TaskForm: React.FC<TaskFormProps> = ({ taskToEdit, onClose }) => {
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
             className="input-field"
-            placeholder="タスクの詳細を入力（任意）"
+            placeholder="詳細な説明（任意）"
             rows={3}
+            aria-label="説明"
           />
         </div>
 
@@ -177,7 +179,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ taskToEdit, onClose }) => {
             type="submit"
             className="btn-primary flex items-center gap-2"
           >
-            {taskToEdit ? '更新する' : '作成する'}
+            {taskToEdit ? 'タスクを更新' : 'タスクを追加'}
           </button>
         </div>
       </form>
