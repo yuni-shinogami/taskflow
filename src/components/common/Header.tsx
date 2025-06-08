@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaTasks, FaSun, FaMoon } from 'react-icons/fa';
+import { FaTasks } from 'react-icons/fa';
 import { useTasks } from '../../hooks/useTasks';
 
 export const Header: React.FC = () => {
