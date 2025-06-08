@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTaskContext } from '../../context/TaskContext';
-import { Priority, Category, Task } from '../../types/task';
+import type { Priority, Category, Task } from '../../types/task';
 import { FaPlus, FaTimes } from 'react-icons/fa';
 
 interface TaskFormProps {

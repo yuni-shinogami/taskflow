@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useReducer, ReactNode, useEffect } from 'react';
-import { Task, TaskFilter, TaskSort } from '../types/task';
+import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import type { ReactNode } from 'react';
+import type { Task, TaskFilter, TaskSort } from '../types/task';
 
 interface TaskState {
   tasks: Task[];

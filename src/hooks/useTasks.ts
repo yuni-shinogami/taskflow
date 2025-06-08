@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useTaskContext } from '../context/TaskContext';
-import { Task, Priority } from '../types/task';
+import type { Priority } from '../types/task';
 
 const priorityOrder: Record<Priority, number> = {
   high: 3,

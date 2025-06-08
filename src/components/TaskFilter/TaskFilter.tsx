@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTaskContext } from '../../context/TaskContext';
-import { Category, Priority } from '../../types/task';
 import { FaFilter, FaSearch } from 'react-icons/fa';
 
 export const TaskFilter: React.FC = () => {

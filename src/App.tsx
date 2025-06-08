@@ -1,4 +1,3 @@
-import React from 'react';
 import { TaskProvider } from './context/TaskContext';
 import { Header } from './components/common/Header';
 import { TaskForm } from './components/TaskForm/TaskForm';
